@@ -1,20 +1,26 @@
 FROM alpine:latest
 
-RUN apk update
-RUN apk upgrade
-RUN apk add nginx
-RUN mkdir -p /run/nginx
+RUN apk update && \
+	apk upgrade  && \
+	apk add nginx  && \
+	openssh && \
+	curl && \
+	supervisor
 # TO GET WORKING BASH IN IMAGE USE "kubectl exec -t -i <deployment-id> -- bash"
-RUN apk update && apk add bash
+# RUN apk update && apk add bash
 
-# RUN adduser -D -g 'www' -h www
+RUN adduser -D -g 'www' www && \
+	mkdir /www && \
+	chown -R www:www /var/lib/nginx && \
+	chown -R www:www /www & \
+	mkdir -p /var/run/nginx
 	
-EXPOSE 80
-EXPOSE 443
+RUN ssh-keygen -A
 
-RUN mkdir -p /certs
-COPY localhost.crt /certs
-COPY localhost.key /certs
-# COPY nginx.conf etc/nginx/
+COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
+COPY srcs/nginx.crt /etc/ssl/services.crt
+COPY srcs/nignx.key /etc/ssl/services.key
+
+EXPOSE 80 443 22
 
 CMD nginx -g 'daemon off;'

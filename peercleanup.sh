@@ -23,7 +23,7 @@ kubectl delete deployment nginx
 kubectl delete configMaps/nginx-config
 
 echo "${Yellow}-------------------------- Wordpress ---------------------------${Color_Off}"
-kubectl delete deployment/wordpress-deployment
+kubectl delete deployment/wordpress
 kubectl delete services wordpress-svc
 # kubectl delete configMaps/wordpress-config
 

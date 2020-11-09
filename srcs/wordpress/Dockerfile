@@ -19,9 +19,9 @@ RUN adduser -D -g 'www' www && \
 	chown -R www:www /www & \
 	mkdir -p /var/run/nginx
 
-COPY srcs/nginx.conf	/etc/nginx/conf.d/default.conf
-COPY srcs/startup.sh	/www/startup.sh
-RUN chmod +x /www/startup.sh
+COPY srcs/nginx.conf	/etc/nginx/nginx.conf
+COPY srcs/startup.sh	/
+RUN chmod +x /startup.sh
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 	chmod +x wp-cli.phar && \
@@ -29,6 +29,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 WORKDIR /www
 RUN wp core download
+WORKDIR /
 
 EXPOSE 5050
 

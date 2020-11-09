@@ -1,3 +1,4 @@
+cd /www
 APISERVER=https://kubernetes.default.svc
 SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
 TOKEN=$(cat ${SERVICEACCOUNT}/token)

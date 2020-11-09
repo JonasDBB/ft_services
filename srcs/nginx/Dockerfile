@@ -3,10 +3,6 @@ FROM alpine:latest
 RUN apk update && \
 	apk upgrade && \
 	apk add nginx openssh
-	# curl supervisor	
-
-# TO GET WORKING BASH IN IMAGE USE "kubectl exec -t -i <deployment-id> -- bash"
-# RUN apk update && apk add bash
 
 RUN adduser -D -g 'www' www && \
 	mkdir /www && \

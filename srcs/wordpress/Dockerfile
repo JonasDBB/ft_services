@@ -16,7 +16,7 @@ RUN apk update && \
 RUN adduser -D -g 'www' www && \
 	mkdir /www && \
 	chown -R www:www /var/lib/nginx && \
-	chown -R www:www /www & \
+	chown -R www:www /www && \
 	mkdir -p /var/run/nginx
 
 COPY srcs/nginx.conf	/etc/nginx/nginx.conf

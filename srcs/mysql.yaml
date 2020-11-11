@@ -7,6 +7,7 @@ metadata:
 spec:
   ports:
     - port: 3306
+      targetPort: 3306
   selector:
     app: mysql
   type: ClusterIP
@@ -47,7 +48,11 @@ spec:
         image: mysql
         imagePullPolicy: Never
         env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: DB_NAME
+          value: wordpress
+        - name: DB_USER
+          value: mysql
+        - name: DB_PASS
           value: password
         ports:
         - containerPort: 3306

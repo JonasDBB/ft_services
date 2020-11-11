@@ -14,7 +14,7 @@ kubectl delete secrets
 # kubectl delete pvc --all --grace-period=0 --force &
 
 echo "${Yellow}---------------------------- Ftps ------------------------------${Color_Off}"
-kubectl delete services ftps-svc
+kubectl delete services ftps
 kubectl delete deployment ftps
 
 echo "${Yellow}---------------------------- Nginx ------------------------------${Color_Off}"
@@ -24,17 +24,17 @@ kubectl delete configMaps/nginx-config
 
 echo "${Yellow}-------------------------- Wordpress ---------------------------${Color_Off}"
 kubectl delete deployment/wordpress
-kubectl delete services wordpress-svc
+kubectl delete services wordpress
 # kubectl delete configMaps/wordpress-config
 
 echo "${Yellow}------------------------- Phpmyadmin ----------------------------${Color_Off}"
-kubectl delete deployment/phpmyadmin-deployment
-kubectl delete service/phpmyadmin-svc
+kubectl delete deployment/phpmyadmin
+kubectl delete service/phpmyadmin
 # kubectl delete configMaps/phpmyadmin-config
 
 echo "${Yellow}-------------------------- Grafana ------------------------------${Color_Off}"
 kubectl delete deployment/grafana
-kubectl delete service/grafana-svc
+kubectl delete service/grafana
 # kubectl delete configMaps/grafana-config
 
 echo "${Yellow}--------------------------- Mysql -------------------------------${Color_Off}"
@@ -43,13 +43,13 @@ kubectl delete services/mysql
 # kubectl delete configMaps/mysql-config
 
 echo "${Yellow}-------------------------- InfluxDB -----------------------------${Color_Off}"
-kubectl delete deployment/influxdb-deployment
-kubectl delete service/influxdb-svc
+kubectl delete deployment/influxdb
+kubectl delete service/influxdb
 # kubectl delete configMaps/influxdb-config
 
 echo "${Yellow}-------------------------- Telegraf -----------------------------${Color_Off}"
-kubectl delete deployment/telegraf-deployment
-kubectl delete service/telegraf-svc
+kubectl delete deployment/telegraf
+kubectl delete service/telegraf
 
 echo "${Yellow}-------------------------- Clusterroles -----------------------------${Color_Off}"
 kubectl delete clusterrole influx:cluster:viewer

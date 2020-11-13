@@ -7,11 +7,12 @@ metadata:
   labels:
     app: phpmyadmin
 spec:
-  type: LoadBalancer
   selector:
     app: phpmyadmin
   ports:
-  - port: 5000
+  - name: phpmyadmin
+    port: 5000
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,3 +36,4 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
+              name: phpmyadmin

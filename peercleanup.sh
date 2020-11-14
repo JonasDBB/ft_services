@@ -49,7 +49,7 @@ kubectl delete service/influxdb
 
 echo "${Yellow}-------------------------- Telegraf -----------------------------${Color_Off}"
 kubectl delete deployment/telegraf
-kubectl delete service/telegraf
+# kubectl delete service/telegraf
 
 echo "${Yellow}-------------------------- Clusterroles -----------------------------${Color_Off}"
 kubectl delete clusterrole influx:cluster:viewer

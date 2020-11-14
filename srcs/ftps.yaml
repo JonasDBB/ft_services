@@ -19,18 +19,18 @@ spec:
     port: 21
     protocol: TCP
     targetPort: 21
-  - name: drie
-    port: 10003
+  - name: ftps-10000
+    port: 10000
     protocol: TCP
-    targetPort: 10003
-  - name: vier
-    port: 10004
-    protocol: TCP
-    targetPort: 10004
-  - name: vijf
-    port: 10005
-    protocol: TCP
-    targetPort: 10005
+    targetPort: 10000
+  # - name: vier
+  #   port: 10004
+  #   protocol: TCP
+  #   targetPort: 10004
+  # - name: vijf
+  #   port: 10005
+  #   protocol: TCP
+  #   targetPort: 10005
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -57,9 +57,9 @@ spec:
           name: ftp-data
         - containerPort: 21
           name: ftps
-        - containerPort: 10003
-          name: drie
-        - containerPort: 10004
-          name: vier
-        - containerPort: 10005
-          name: vijf
+        - containerPort: 10000
+          name: ftps-10000
+        # - containerPort: 10004
+        #   name: vier
+        # - containerPort: 10005
+        #   name: vijf

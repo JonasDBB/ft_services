@@ -1,12 +1,18 @@
 #!/bin/zsh
-minikube start --driver=virtualbox --disk-size=5GB
+minikube start --driver=virtualbox --disk-size=5GB --extra-config=kubelet.authentication-token-webhook=true
 minikube addons enable metallb
 minikube addons enable metrics-server
 minikube addons enable dashboard
 eval $(minikube docker-env)
 
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
 # applying metallb yaml
 kubectl apply -f srcs/metallb.yaml
+
+# creating serviceaccount
+kubectl create serviceaccount jonas
+kubectl apply -f srcs/serviceaccount.yaml
 
 # build images and services
 # nginx
@@ -28,6 +34,15 @@ kubectl apply -f srcs/phpmyadmin.yaml
 # ftps
 docker build -t ftps srcs/ftps/
 kubectl apply -f srcs/ftps.yaml
+
+# influxdb
+docker build -t influxdb srcs/influxdb/
+kubectl apply -f srcs/influxdb.yaml
+
+# telegraf
+docker build -t telegraf srcs/telegraf/
+kubectl apply -f srcs/telegraf.yaml
+
 
 # running dashboard (pray to the kubergods it works)
 minikube dashboard

@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk update && \
 	apk upgrade && \
-	apk add openssl vsftpd jq curl
+	apk add openssl vsftpd jq
 
 RUN mkdir -p /ftps && \
 	adduser -D jonas -h /ftps && \

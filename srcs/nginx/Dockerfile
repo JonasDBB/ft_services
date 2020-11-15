@@ -14,7 +14,7 @@ RUN	adduser -D jonas
 RUN	echo "jonas:password"|chpasswd
 RUN ssh-keygen -A
 
-COPY srcs/nginx.conf	/etc/nginx/conf.d/default.conf
+COPY srcs/nginx.conf	/etc/nginx/nginx.conf
 COPY srcs/nginx.crt		/etc/ssl/nginx.crt
 COPY srcs/nginx.key		/etc/ssl/nginx.key
 COPY srcs/sshd_config	/etc/ssh/sshd_config

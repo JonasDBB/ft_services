@@ -20,7 +20,7 @@ kubectl delete deployment ftps
 echo "${Yellow}---------------------------- Nginx ------------------------------${Color_Off}"
 kubectl delete services nginx
 kubectl delete deployment nginx
-kubectl delete configMaps/nginx-config
+# kubectl delete configMaps/nginx-config
 
 echo "${Yellow}-------------------------- Wordpress ---------------------------${Color_Off}"
 kubectl delete deployment/wordpress

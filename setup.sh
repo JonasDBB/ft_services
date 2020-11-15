@@ -5,6 +5,7 @@ minikube addons enable metrics-server
 minikube addons enable dashboard
 eval $(minikube docker-env)
 
+# creating secret
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
 # applying metallb yaml
@@ -43,6 +44,9 @@ kubectl apply -f srcs/influxdb.yaml
 docker build -t telegraf srcs/telegraf/
 kubectl apply -f srcs/telegraf.yaml
 
+# grafana
+docker build -t grafana srcs/grafana/
+kubectl apply -f srcs/grafana.yaml
 
 # running dashboard (pray to the kubergods it works)
 minikube dashboard

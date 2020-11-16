@@ -1,5 +1,5 @@
 #!/bin/zsh
-minikube start --driver=virtualbox --disk-size=5GB --extra-config=kubelet.authentication-token-webhook=true
+minikube start --driver=virtualbox --disk-size=10GB --extra-config=kubelet.authentication-token-webhook=true
 minikube addons enable metallb
 minikube addons enable metrics-server
 minikube addons enable dashboard
